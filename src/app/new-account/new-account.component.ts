@@ -16,6 +16,9 @@ export class NewAccountComponent {
   // @Output() accountAdded = new EventEmitter<{name: string, status: string}>();
 constructor(private loggingService : LoggingService,
   private accountService : AccountService){
+    this.accountService.statusUpdated.subscribe(
+      (status :string) => alert('New status ' + status )
+    );
 
 }
   onCreateAccount(accountName: string, accountStatus: string) {
@@ -24,6 +27,6 @@ constructor(private loggingService : LoggingService,
     //   status: accountStatus
     // });
     this.accountService.addAccount(accountName,accountStatus);
-    this.loggingService.logStatusChange(accountStatus);
+    //this.loggingService.logStatusChange(accountStatus);
   }
 }
